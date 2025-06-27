@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "879140539528",
+    "project_id": "sample-firebase-ai-app-14768",
+    "storage_bucket": "sample-firebase-ai-app-14768.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879140539528:android:0bcde5ba45d7b07665633d",
+        "android_client_info": {
+          "package_name": "com.example.crafty_bay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi5j4Yy5xTXc02QevYTMI88kow-UVqPOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879140539528:android:d08d96307e649d4b65633d",
+        "android_client_info": {
+          "package_name": "com.example.home_rent_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi5j4Yy5xTXc02QevYTMI88kow-UVqPOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879140539528:android:a1970dd06c03535665633d",
+        "android_client_info": {
+          "package_name": "com.example.ostad_task_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi5j4Yy5xTXc02QevYTMI88kow-UVqPOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
