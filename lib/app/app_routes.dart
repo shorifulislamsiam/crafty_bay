@@ -1,7 +1,7 @@
 
 import 'package:crafty_bay/features/auth/ui/screen/login_screen.dart';
 import 'package:crafty_bay/features/auth/ui/screen/sign_up_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:crafty_bay/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../features/auth/ui/screen/splash_screen.dart';
@@ -15,7 +15,12 @@ class AppRoutes{
       screenWidget = LoginScreen();
     }else if(settings.name == SignUpScreen.name){
       screenWidget = SignUpScreen();
+    }else if(settings.name == MainBottomNavScreen.name){
+      screenWidget = MainBottomNavScreen();
     }
+
+
+
     return MaterialPageRoute(builder: (context)=> screenWidget);
   }
 }

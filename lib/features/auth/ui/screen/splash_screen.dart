@@ -1,5 +1,7 @@
 import 'package:crafty_bay/features/auth/ui/screen/login_screen.dart';
 import 'package:crafty_bay/features/auth/ui/widgets/app_logo.dart';
+import 'package:crafty_bay/features/common/ui/screens/main_bottom_nav_screen.dart';
+import 'package:crafty_bay/features/home/ui/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -14,13 +16,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    _moveToLoginScreen();
+    _moveToHomeScreen();
     super.initState();
   }
 
-  Future<void> _moveToLoginScreen ()async{
+  Future<void> _moveToHomeScreen ()async{
     await Future.delayed(Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, LoginScreen.name);
+    Navigator.pushReplacementNamed(context, MainBottomNavScreen.name);
   }
   @override
   Widget build(BuildContext context) {
