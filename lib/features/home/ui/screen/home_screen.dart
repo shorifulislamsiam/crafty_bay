@@ -1,9 +1,14 @@
+import 'package:crafty_bay/app/app_color.dart';
 import 'package:crafty_bay/app/asset_path.dart';
+import 'package:crafty_bay/features/common/ui/controllers/main_bottom_nav_controller.dart';
+import 'package:crafty_bay/features/common/widgets/product_card.dart';
+import 'package:crafty_bay/features/common/widgets/product_category_item.dart';
 import 'package:crafty_bay/features/home/ui/widget/AppBar_Icon_Button.dart';
 import 'package:crafty_bay/features/home/ui/widget/home_carousel_slider_widget.dart';
 import 'package:crafty_bay/features/home/ui/widget/product_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,16 +37,56 @@ class _HomeScreenState extends State<HomeScreen> {
               buildSectionHeader(
                 context,
                 title: "Categories",
-                onTapSeeAll: () {},
+                onTapSeeAll: () {
+                  Get.find<MainBottomNavControllers>().moveToCategory();
+                },
               ),
               _getCategoriesList(),
               buildSectionHeader(context, title: "Popular", onTapSeeAll: () {}),
+              _getPopularProducts(),
               buildSectionHeader(context, title: "Special", onTapSeeAll: () {}),
+              _getSpecialProducts(),
               buildSectionHeader(context, title: "New", onTapSeeAll: () {}),
+              _getNewProducts(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _getPopularProducts() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        spacing: 16,
+        children: [1,2,3,4].map((e)=> ProductCard()).toList(),
+      ),
+    );
+  }
+  Widget _getSpecialProducts(){
+    return SizedBox(
+      height: 180,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+          itemBuilder: (context,index){
+            return ProductCard();
+          }, separatorBuilder: (context,index){
+            return SizedBox(width: 16,);
+      }, itemCount: 8),
+    );
+  }
+
+  Widget _getNewProducts(){
+    return SizedBox(
+      height: 180,
+      child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context,index){
+            return ProductCard();
+          }, separatorBuilder: (context,index){
+        return SizedBox(width: 16,);
+      }, itemCount: 8),
     );
   }
 
@@ -55,12 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         itemCount: 7,
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Card(child: Icon(Icons.computer, size: 35)),
-              Text("Computer"),
-            ],
-          );
+          return ProductCategoryItem();
         },
       ),
     );
@@ -91,3 +131,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
