@@ -13,6 +13,7 @@ class AppTheme {
       textTheme: TextTheme(
         headlineLarge: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
         bodySmall: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+        headlineSmall: TextStyle(fontWeight: FontWeight.w600, fontSize: 16,color: Colors.grey.shade600)
       ),
       inputDecorationTheme: InputDecorationTheme(
         labelStyle: TextStyle(
