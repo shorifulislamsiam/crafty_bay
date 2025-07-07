@@ -1,9 +1,12 @@
 import 'package:crafty_bay/app/app_color.dart';
+import 'package:crafty_bay/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import 'package:crafty_bay/features/product/widgets/color_picker.dart';
 import 'package:crafty_bay/features/product/widgets/inc_dec_button.dart';
 import 'package:crafty_bay/features/product/widgets/product_details_slider.dart';
 import 'package:crafty_bay/features/product/widgets/size_picker.dart';
+import 'package:crafty_bay/features/review/ui/screen/reviews_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductsDetailsScreen extends StatefulWidget {
   const ProductsDetailsScreen({super.key, required this.productId});
@@ -18,7 +21,9 @@ class _ProductsDetailsScreenState extends State<ProductsDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Product Details")),
+      appBar: AppBar(
+          title: Text("Product Details"),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -57,7 +62,9 @@ class _ProductsDetailsScreenState extends State<ProductsDetailsScreen> {
                                 Text("4.8", style: TextStyle(color: Colors.grey)),
                               ],
                             ),
-                            TextButton(onPressed: () {}, child: Text("Reviews")),
+                            TextButton(onPressed: () {
+                              Navigator.pushNamed(context, ReviewsScreen.name);
+                            }, child: Text("Reviews")),
                             Card(
                               color: AppColors.themeColor,
                               shape: RoundedRectangleBorder(
