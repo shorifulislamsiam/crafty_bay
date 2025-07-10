@@ -1,6 +1,7 @@
 
 import 'package:crafty_bay/features/auth/ui/screen/login_screen.dart';
 import 'package:crafty_bay/features/auth/ui/screen/sign_up_screen.dart';
+import 'package:crafty_bay/features/auth/ui/screen/verify_otp_screen.dart';
 import 'package:crafty_bay/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:crafty_bay/features/product/ui/product_list_screen.dart';
 import 'package:crafty_bay/features/product/ui/products_details_screen.dart';
@@ -31,6 +32,9 @@ class AppRoutes{
       screenWidget = ReviewsScreen();
     }else if(settings.name == CreateReviewsScreen.name){
       screenWidget = CreateReviewsScreen();
+    }else if(settings.name == VerifyOtpScreen.name){
+      final String email= settings.arguments as String;
+      screenWidget = VerifyOtpScreen(email: email);
     }
 
 

@@ -104,6 +104,12 @@ class _LoginScreenState extends State<LoginScreen> {
     if(_formKey.currentState!.validate()){
       Navigator.pushNamed(context, SignUpScreen.name);
     }
+  }
 
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }

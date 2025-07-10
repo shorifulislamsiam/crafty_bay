@@ -242,7 +242,8 @@ class NetworkClients {
   void _logResponse(Response response) {
     final String message = """
     URL->${response.request?.url}
-    HEADERS->${response.headers}
+    STATUS CODE->${response.statusCode}
+    HEADERS->${response.request?.headers}
     BODY->${response.body}
     """;
     _logger.i(message);

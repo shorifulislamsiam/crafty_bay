@@ -1,4 +1,5 @@
 import 'package:crafty_bay/features/auth/ui/screen/login_screen.dart';
+import 'package:crafty_bay/features/auth/ui/screen/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/ui/widgets/app_logo.dart';
 import 'package:crafty_bay/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:crafty_bay/features/home/ui/screen/home_screen.dart';
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _moveToHomeScreen ()async{
     await Future.delayed(Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, MainBottomNavScreen.name);
+    Navigator.pushReplacementNamed(context, SignUpScreen.name);
   }
   @override
   Widget build(BuildContext context) {

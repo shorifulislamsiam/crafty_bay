@@ -17,11 +17,11 @@ class UserModel {
     required this.avatarUrl,
   });
 
-  factory UserModel.toJson(Map<String, dynamic> jsonData) {
+  factory UserModel.fromJson(Map<String, dynamic> jsonData) {
     return UserModel(
       id: jsonData["_id"] ?? "",
-      firstName: jsonData["first_Name"] ?? "",
-      lastName: jsonData["last_Name"] ?? "",
+      firstName: jsonData["first_name"] ?? "",
+      lastName: jsonData["last_name"] ?? "",
       email: jsonData["email"] ?? "",
       phone: jsonData["phone"] ?? "",
       city: jsonData["city"] ?? "",
@@ -29,6 +29,14 @@ class UserModel {
     );
   }
   Map<String, dynamic> toJson(){
-    return {};
+    return {
+      "_id": id,
+      "first_name": firstName,
+      "last_name": lastName,
+      "email": email,
+      "phone": phone,
+      "city": city,
+      "avatarUrl": avatarUrl,
+    };
   }
 }
