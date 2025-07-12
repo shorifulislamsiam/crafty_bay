@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController{
 
-  static String? accessToken;
-  static UserModel? userModel;
+  String? accessToken; //static
+  UserModel? userModel; //static
 
   final String _tokenKey = "token";
   final String _userDataKey = "user-data";

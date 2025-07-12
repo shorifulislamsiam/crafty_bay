@@ -2,6 +2,7 @@ import 'package:crafty_bay/core/ui/widget/center_circular_progress_indicator.dar
 import 'package:crafty_bay/core/ui/widget/show_snack_bar_message.dart';
 import 'package:crafty_bay/features/auth/data/model/sign_up_request_model.dart';
 import 'package:crafty_bay/features/auth/ui/controllers/sign_up_controller.dart';
+import 'package:crafty_bay/features/auth/ui/screen/login_screen.dart';
 import 'package:crafty_bay/features/auth/ui/screen/verify_otp_screen.dart';
 import 'package:crafty_bay/features/auth/ui/widgets/app_logo.dart';
 import 'package:email_validator/email_validator.dart';
@@ -192,6 +193,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     );
                   },
                 ),
+                const SizedBox(height: 16,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Already have an account?"),
+                    TextButton(onPressed: (){
+                      Navigator.pushNamed(context, LoginScreen.name);
+                    }, child: Text("Log-in")),
+                  ],
+                )
               ],
             ),
           ),

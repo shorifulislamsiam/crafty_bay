@@ -1,8 +1,14 @@
 import 'package:crafty_bay/app/app_color.dart';
+import 'package:crafty_bay/core/ui/widget/center_circular_progress_indicator.dart';
+import 'package:crafty_bay/core/ui/widget/show_snack_bar_message.dart';
+import 'package:crafty_bay/features/auth/data/model/login_request_model.dart';
+import 'package:crafty_bay/features/auth/ui/controllers/login_controller.dart';
 import 'package:crafty_bay/features/auth/ui/screen/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/ui/widgets/app_logo.dart';
+import 'package:crafty_bay/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isObsecure = false;
+  final LoginController _loginController = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
     TextTheme _textTheme = Theme.of(context).textTheme;
@@ -67,11 +74,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           suffixIcon: IconButton(
                             onPressed: () {
                               _isObsecure = !_isObsecure;
-                              setState(() {
-
-                              });
+                              setState(() {});
                             },
-                            icon: _isObsecure ? Icon(Icons.remove_red_eye): Icon(Icons.remove_red_eye_outlined),
+                            icon:
+                                _isObsecure
+                                    ? Icon(Icons.remove_red_eye)
+                                    : Icon(Icons.remove_red_eye_outlined),
                           ),
                         ),
                         validator: (value) {
@@ -91,7 +99,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(height: 16),
-                ElevatedButton(onPressed: _nextSubmitButton, child: Text("Next")),
+                GetBuilder<LoginController>(
+                  builder: (controller) {
+                    return Visibility(
+                      visible: controller.inProgress == false,
+                      replacement: centerCircularProgressIndicator(),
+                      child: ElevatedButton(
+                        onPressed: _nextSubmitButton,
+                        child: Text("Next"),
+                      ),
+                    );
+                  }
+                ),
               ],
             ),
           ),
@@ -100,9 +119,23 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _nextSubmitButton() {
-    if(_formKey.currentState!.validate()){
-      Navigator.pushNamed(context, SignUpScreen.name);
+  void _nextSubmitButton() async {
+    if (_formKey.currentState!.validate()) {
+      LoginRequestModel model = LoginRequestModel(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+      );
+      bool _isSuccess = await Get.find<LoginController>().login(model);
+      if (_isSuccess) {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          MainBottomNavScreen.name,
+          (predicate) => false,
+        );
+      }else{
+        showSnackBarMessage(context, _loginController.errorMessage!,true);
+      }
+
     }
   }
 

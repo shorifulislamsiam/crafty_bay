@@ -15,7 +15,7 @@ class SignUpController extends GetxController {
 
   Future<bool> signUp(SignUpRequestModel signUpRequestModel) async {
     bool isSuccess = false;
-    _inProgress = false;
+    _inProgress = true;
     update();
     final NetworkResponse response = await Get.find<NetworkClients>().postRequest(
       Urls.signUpUrl,
