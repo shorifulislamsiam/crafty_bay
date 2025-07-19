@@ -30,7 +30,7 @@ class HomeSliderController extends GetxController{
       _errorMessage = response.errorMessage!;
     }
     _inProgress = false;
-    update;
+    update();
     return isSuccess;
 
   }

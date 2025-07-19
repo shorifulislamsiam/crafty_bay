@@ -1,17 +1,21 @@
 import 'package:crafty_bay/app/app_color.dart';
+import 'package:crafty_bay/features/common/models/product_model.dart';
 import 'package:crafty_bay/features/product/ui/products_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
-    super.key,
-  });
+  const ProductCard({super.key, required this.productModel});
 
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.pushNamed(context, ProductsDetailsScreen.name, arguments: "1234");
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          ProductsDetailsScreen.name,
+          arguments: productModel.id,
+        );
       },
       child: Container(
         width: 140,
@@ -40,17 +44,32 @@ class ProductCard extends StatelessWidget {
               ),
               width: 140,
               padding: EdgeInsets.all(8),
-              child: Image.network(
-                height: 90,
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZgGjOyPjKbKQuEdjcBisy7FwFDXgCM6hBgA&s",
-              ),
+              child:
+                  productModel.photoUrl.isNotEmpty &&
+                          productModel.photoUrl.first != null
+                      ? Image.network(
+                        productModel.photoUrl.first,
+                        height: 90,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Icon(
+                            Icons.image_not_supported,
+                            size: 90,
+                            color: Colors.grey,
+                          );
+                        },
+                      )
+                      : Icon(
+                        Icons.image_not_supported,
+                        size: 90,
+                        color: Colors.grey,
+                      ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   Text(
-                    "Nike black",
+                    _getTitle(productModel.title),
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.w600,
@@ -62,7 +81,7 @@ class ProductCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "৳ 2500",
+                        "৳ ${productModel.currentPrice}",
                         style: TextStyle(
                           color: AppColors.themeColor,
                           fontWeight: FontWeight.w600,
@@ -99,5 +118,12 @@ class ProductCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getTitle(String title) {
+    if (title.length > 9) {
+      return "${title.substring(0, 8)}..";
+    }
+    return title;
   }
 }

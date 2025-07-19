@@ -2,6 +2,7 @@
 import 'package:crafty_bay/features/auth/ui/screen/login_screen.dart';
 import 'package:crafty_bay/features/auth/ui/screen/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/ui/screen/verify_otp_screen.dart';
+import 'package:crafty_bay/features/common/models/category_list_model.dart';
 import 'package:crafty_bay/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:crafty_bay/features/product/ui/product_list_screen.dart';
 import 'package:crafty_bay/features/product/ui/products_details_screen.dart';
@@ -23,7 +24,7 @@ class AppRoutes{
     }else if(settings.name == MainBottomNavScreen.name){
       screenWidget = MainBottomNavScreen();
     }else if(settings.name == ProductListScreen.name){
-      final String category = settings.arguments as String;
+      final CategoryListModel category = settings.arguments as CategoryListModel;
       screenWidget= ProductListScreen(category: category);
     }else if(settings.name == ProductsDetailsScreen.name){
       final String productId = settings.arguments as String;

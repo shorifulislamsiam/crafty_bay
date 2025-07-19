@@ -13,7 +13,7 @@ class HomeSliderModel {
 
   factory HomeSliderModel.fromJson(Map<String,dynamic>jsonData){
     return HomeSliderModel(
-        id: jsonData["_id"],
+        id: jsonData["_id"] ?? "",
         photo_url: jsonData["photo_url"],
         description: jsonData["description"],
         brand: jsonData["brand"]
